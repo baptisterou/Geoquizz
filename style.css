@@ -1,0 +1,90 @@
+body {
+    font-family: sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#geoquizz {
+    display: flex;
+    margin-left: 2%;
+    
+}
+
+#navbar {
+    display: flex;
+    list-style-type: none;
+    margin-right: 2%;
+    font-weight: bold;
+    font-size: 1.4em;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    min-width: 200px;
+    max-width: 90%;
+    height: 700px;
+    margin-top: 30px;
+}
+
+main h2 {
+    display: grid;
+    grid-row: 1 / 2;
+    grid-column: 4 / 9;
+    justify-self: center;
+    text-wrap: nowrap;
+}
+
+main h3 {
+    display: grid;
+    grid-row: 2 / 3;
+    grid-column: 4 / 9;
+    justify-content: center;
+    text-wrap: nowrap;
+}
+
+#monde {
+    display: grid;
+    grid-row: 4 / 5;
+    grid-column: 4 / 5;
+    
+}
+
+#europe {
+    display: grid;
+    grid-row: 4 / 5;
+    grid-column:  6 / 7;
+}
+
+#amerique {
+    display: grid;
+    grid-row: 4 / 5;
+    grid-column: 8 / 9;
+}
+
+#asie {
+    display: grid;
+    grid-row: 6 / 7;
+    grid-column: 4 / 5;
+}
+
+#afrique {
+    display: grid;
+    grid-row: 6 / 7;
+    grid-column:  6 / 7;
+}
+
+#oceanie {
+    display: grid;
+    grid-row: 6 / 7;
+    grid-column: 8 / 9;
+}
+
+
+#card {
+    display: none;
+}

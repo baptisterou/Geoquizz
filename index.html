@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Geoquizz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 id="geoquizz">Geoquizz</h1>
+        <ul id="navbar">
+            <li>Nouvelle Partie</li>
+        </ul>
+    </header>
+    <main>
+        <h2>Bienvenue dans GeoQuizz</h2>
+        <h3>Choisissez un niveau</h3>
+        <button id="monde">Monde</button>
+        <button id="europe">Europe</button>
+        <button id="asie">Asie</button>
+        <button id="amerique">Amérique</button>
+        <button id="afrique">Afrique</button>
+        <button id="oceanie">Océanie</button>
+    </main>
+    <div id="card">
+        <h2 id="nomPays"></h2>
+        <img src="drapeauPays" alt="drapeauPays">
+        <form action="get">
+            <input type="radio" id="reponse" name="pays" value="choix1">
+                <label for="choix1">Choix 1</label>
+            <input type="radio" id="reponse" name="pays" value="choix2">
+                <label for="choix2">Choix 2</label>
+            <input type="radio" id="reponse" name="pays" value="choix3">
+                <label for="choix3">Choix 3</label>
+            <input type="radio" id="reponse" name="pays" value="choix4">
+                <label for="choix4">Choix 4</label>
+            </form>
+        </form>
+    </div>
+</body>
+</html>
