@@ -62,6 +62,12 @@ const selectCountry = () => {
     return paysIso[rand];
 }
 
+// set le drapeau d'une nouvelle carte
+const flag = () => {
+    let drapeauCarte = document.getElementById("drapeauCarte")
+     drapeauCarte.src = `img/${paysIsoCode[paysIso.indexOf(lastOk[lastOk.length-1])]}.png`;
+}
+
 //génère trois mauvaises réponses
 const badAnswer = () => {
     let propositions = [];
@@ -83,15 +89,19 @@ const badAnswer = () => {
 // Tests
 /*for (let i = 0; i  < paysIso.length ; i++){
     selectCountry();
-}*/
+}
 
 //appelle une bonne réponse
 console.log(selectCountry());
 
 //affiche la liste de pays déjà appellés en bonne réponse
 console.log(countriesDisplayed)
+console.log(flag())
 console.log(badAnswer());
 
+*/
+
+//reset une partie
 
 let nouvellePartie = document.getElementById("nouvellePartie");
 
@@ -100,4 +110,78 @@ nouvellePartie.addEventListener('click', newGame)
 function newGame() {
     let card = document.getElementById('card');
     card.style.display = 'none';
+}
+
+// lance une partie monde
+
+let monde = document.getElementById('monde');
+
+monde.addEventListener('click', gameMonde);
+
+// Shuffle Fischer-Yates
+
+const shuffleArray = (array) => {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+};
+
+//store la bonne reponse dans la variable
+
+let bonneReponse = lastOk[lastOk.length-1];
+
+//Génére les mauvaises propositions
+
+let mauvaisesPropositions = badAnswer();
+
+// Genere un array 4 choix
+
+let choix = [bonneReponse, ...mauvaisesPropositions];
+
+//melange des propositions
+
+let reponsesAleatoires = shuffleArray(choix);
+
+// insertions dans l'html
+
+let choix1 = document.getElementById('choix1')
+let choix2 = document.getElementById('choix2')
+let choix3 = document.getElementById('choix3')
+let choix4 = document.getElementById('choix4')
+
+choix1.innerHTML = reponsesAleatoires[0];
+choix2.innerHTML = reponsesAleatoires[1];
+choix3.innerHTML = reponsesAleatoires[2];
+choix4.innerHTML = reponsesAleatoires[3];
+
+/*
+const genererChoix = () => {
+    let choix1 = document.getElementById('choix1')
+    let choix2 = document.getElementById('choix2')
+    let choix3 = document.getElementById('choix3')
+    let choix4 = document.getElementById('choix4')
+    const tableauChoix = [choix1, choix2, choix3, choix4]
+    const randomChoix = (tableauChoix) => {
+        for (let i = tableauChoix.length - 1; i > 0; i--) {
+            // Générer un index aléatoire
+            const j = Math.floor(Math.random() * (i + 1));
+            // Échanger les éléments array[i] et array[j]
+            [tableauChoix[i], tableauChoix[j]] = [tableauChoix[j], tableauChoix[i]];
+        }
+        return tableauChoix;
+    }
+    choix1.innerHTML = tableauChoix[0];
+    choix2.innerHTML = tableauChoix[1];
+    choix3.innerHTML = tableauChoix[2];
+    choix4.innerHTML = tableauChoix[3];
+}
+    */
+
+function gameMonde() {
+    card.style.display = 'flex';
+    selectCountry();
+    flag();
+    genererChoix();
 }
