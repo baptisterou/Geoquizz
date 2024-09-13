@@ -95,7 +95,26 @@ main h3 {
 
 
 #card {
-    display: none;
+    position: fixed;
+    top: 15%;
+    left: 15%;
+    height: 75%;
+    width: 65%;
+    background-color: white;
+    border: 5px black solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#drapeauCarte {
+    height: 40%;
+    margin-bottom: 50px;
+}
+
+#reponses {
+    margin-bottom: 70px;
 }
 
 button {
@@ -109,4 +128,14 @@ button {
 button:hover {
     border: 3px rgba(138, 13, 13, 0.685) solid;
     cursor: pointer;
+}
+
+#nouvellePartie {
+    font-size: 1.1em;
+    font-weight: bold;
+    border: none;
+}
+
+#nouvellePartie:hover {
+    color: brown;
 }

@@ -14,10 +14,10 @@ const paysIsoCode = ['AF', 'AX', 'AL', 'DZ', 'AS', 'AD', 'AO', 'AI', 'AQ', 'AG',
 const paysIso = [
     'Afghanistan', 'Åland', 'Albanie', 'Algérie', 'Samoa américaines', 'Andorre', 'Angola', 'Anguilla', 'Antarctique', 'Antigua-et-Barbuda',
     'Argentine', 'Arménie', 'Aruba', 'Australie', 'Autriche', 'Azerbaïdjan', 'Bahamas', 'Bahreïn', 'Bangladesh', 'Barbade', 'Biélorussie',
-    'Belgique', 'Belize', 'Bénin', 'Bermudes', 'Bhoutan', 'Bolivie', 'Bosnie-Herzégovine', 'Botswana', 'Île Bouvet', 'Brésil', 'Territoire britannique de l’océan Indien',
+    'Belgique', 'Belize', 'Bénin', 'Bermudes', 'Bhoutan', 'Bolivie', 'Bosnie-Herzégovine', 'Botswana', 'Île Bouvet', 'Brésil', 'Territoire britannique de l océan Indien',
     'Brunéi', 'Bulgarie', 'Burkina Faso', 'Burundi', 'Cap-Vert', 'Cambodge', 'Cameroun', 'Canada', 'Îles Caïmans', 'République centrafricaine',
     'Tchad', 'Chili', 'Chine', 'Île Christmas', 'Îles Cocos', 'Colombie', 'Comores', 'République du Congo', 'République démocratique du Congo', 'Îles Cook',
-    'Costa Rica', 'Côte d’Ivoire', 'Croatie', 'Cuba', 'Chypre', 'République tchèque', 'Danemark', 'Djibouti', 'Dominique', 'République dominicaine', 
+    'Costa Rica', 'Côte d Ivoire', 'Croatie', 'Cuba', 'Chypre', 'République tchèque', 'Danemark', 'Djibouti', 'Dominique', 'République dominicaine', 
     'Équateur', 'Égypte', 'Salvador', 'Guinée équatoriale', 'Érythrée', 'Estonie', 'Éthiopie', 'Îles Malouines', 'Îles Féroé', 'Fidji',
     'Finlande', 'France', 'Guyane française', 'Polynésie française', 'Terres australes et antarctiques françaises', 'Gabon', 'Gambie', 'Géorgie', 'Allemagne', 'Ghana', 
     'Gibraltar', 'Grèce', 'Groenland', 'Grenade', 'Guadeloupe', 'Guam', 'Guatemala', 'Guernesey', 'Guinée', 'Guinée-Bissau', 'Guyana', 'Haïti', 'Îles Heard-et-MacDonald', 
@@ -41,6 +41,7 @@ const paysIso = [
     const countriesDisplayed = [];
     let points = 0;
     let lastOk = [];
+    let propositions = [];
 
 //Selectionne un pays et pousse les pays déjà utilisés dans countriesDisplayed. Compare si le pays est déjà dans countriesDisplayed.
 
@@ -61,14 +62,21 @@ const selectCountry = () => {
     return paysIso[rand];
 }
 
-//génère une mauvaise réponse 
+//génère trois mauvaises réponses
 const badAnswer = () => {
-    let bad = Math.floor(Math.random()*254);
-    if (lastOk.includes(paysIso[bad])) {
-        return selectCountry
-    } else {
-        return paysIso[bad];
+    let propositions = [];
+    
+    for (let j = 0; j < 3; j++) {
+        let bad;
+        do {
+            bad = Math.floor(Math.random() * 254);
+        } while (lastOk.includes(paysIso[bad]) || propositions.includes(paysIso[bad])); 
+        
+        propositions.push(paysIso[bad]);
+        console.log(paysIso[bad]);
     }
+    
+    return propositions;
 }
 
 
@@ -77,14 +85,19 @@ const badAnswer = () => {
     selectCountry();
 }*/
 
-// appelle 3 mauvaises réponses
-for (let j = 0 ; j < 3; j++) {
-    console.log(`Bad country number ${j} is ${badAnswer()}`);
-}
-
 //appelle une bonne réponse
 console.log(selectCountry());
 
 //affiche la liste de pays déjà appellés en bonne réponse
 console.log(countriesDisplayed)
+console.log(badAnswer());
 
+
+let nouvellePartie = document.getElementById("nouvellePartie");
+
+nouvellePartie.addEventListener('click', newGame)
+
+function newGame() {
+    let card = document.getElementById('card');
+    card.style.display = 'none';
+}
